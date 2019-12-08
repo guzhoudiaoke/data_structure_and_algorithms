@@ -1,6 +1,6 @@
-# data_structure_and_algorithms
+# data structure and algorithms
 
-## 1.Coding Interview Guide
+## 1.coding interview guide
 
 ## 2.data structures
 
