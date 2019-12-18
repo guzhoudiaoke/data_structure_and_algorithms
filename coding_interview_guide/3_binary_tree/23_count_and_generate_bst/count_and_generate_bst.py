@@ -36,6 +36,21 @@ def num_bst(n):
 
 
 @timethis
+def num_bst1(n):
+    def recursive(n):
+        if n < 2:
+            return 1
+
+        num = 0
+        for i in range(1, n+1):
+            num += recursive(i-1) * recursive(n-i)
+
+        return num
+
+    return recursive(n)
+
+
+@timethis
 def num_bst2(n):
     def recursive(n):
         if n in d:
@@ -113,9 +128,11 @@ def print_tree_by_level(root):
 
 
 def test(n):
-    n1 = num_bst(n)
+    n0 = num_bst(n)
+    #n1 = num_bst1(n)
     n2 = num_bst2(n)
-    print(n1, n2)
+    #print(n0, n1, n2)
+    print(n0, n2)
 
 
 def test_generate(n):
