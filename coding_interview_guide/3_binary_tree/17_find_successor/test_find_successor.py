@@ -15,7 +15,7 @@ class FindSuccessorTestCase(unittest.TestCase):
             tree.insert_recursive(d)
 
         inorder = tree.inorder_traversal_recursive()
-        node = tree.get_left_node(tree.root)
+        node = tree.get_left_most_node(tree.root)
         successors = []
         while node:
             successors.append(node.val)
@@ -35,7 +35,7 @@ class FindSuccessorTestCase(unittest.TestCase):
                 tree.insert_recursive(d)
 
             inorder = tree.inorder_traversal_recursive()
-            node = tree.get_left_node(tree.root)
+            node = tree.get_left_most_node(tree.root)
             successors = []
             while node:
                 successors.append(node.val)

@@ -59,7 +59,7 @@ class BST():
         recursive(self.root)
         return result
 
-    def get_left_node(self, node):
+    def get_left_most_node(self, node):
         if node is None:
             return node
 
@@ -73,7 +73,7 @@ class BST():
             return node
 
         if node.right is not None:
-            return self.get_left_node(node.right)
+            return self.get_left_most_node(node.right)
         else:
             parent = node.parent
             while parent is not None and parent.left != node:
