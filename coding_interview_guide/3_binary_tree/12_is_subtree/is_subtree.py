@@ -50,3 +50,19 @@ def is_subtree(root1, root2):
     serialize_str1 = serialize(root1)
     serialize_str2 = serialize(root2)
     return serialize_str2 in serialize_str1
+
+
+def is_subtree2(root1, root2):
+    """
+    check if tree t2 is subtree of t1
+
+    :param root1: the root of tree1
+    :param root2: the root of tree2
+    """
+    def to_tupple(node):
+        if node is None:
+            return None
+
+        return (node.val, to_tupple(node.left), to_tupple(node.right))
+
+    return str(to_tupple(root2)) in str(to_tupple(root1))

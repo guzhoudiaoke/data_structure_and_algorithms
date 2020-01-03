@@ -67,8 +67,6 @@ class LowestAncestorRecord1():
             self.map[root] = None
 
         self.set_map(root)
-        # for k, v in self.map.items():
-        #     print(k.val, v.val if v else 'None')
 
     def set_map(self, node):
         """set map for node
@@ -103,11 +101,9 @@ class LowestAncestorRecord2():
     def __init__(self, root):
         self.map = {}
         self.set_map(root)
-        # for k, v in self.map.items():
-        #     print(k[0].val, k[1].val, v.val)
 
     def set_map(self, node):
-        """ set map for node
+        """set map for node
         """
         if node is None:
             return
@@ -131,7 +127,8 @@ class LowestAncestorRecord2():
         self.process_node(node.right, ancestor)
 
     def process_left_right(self, node):
-        """ map[(node of node's left subtree, node of node's right subtree)] = node
+        """ map[(node of node's left subtree,
+        node of node's right subtree)] = node
         """
         if node is None:
             return
@@ -151,7 +148,7 @@ class LowestAncestorRecord2():
         self.process_left(left.right, right, ancestor)
 
     def process_right(self, left, right, ancestor):
-        """process right
+        """ process right
         """
         if right is None:
             return
@@ -206,48 +203,44 @@ def lowest_ancestor1(root, node1, node2):
 
 
 def lowest_ancestor2(root, node1, node2):
+    """get lowest ancestor, method 2
     """
-    get lowest ancestor, method 2
-    """
-    def is_parent_of(parent, child):
+    def is_ancestor_of(ancestor, node):
+        """check if parent is parent of child
         """
-        check if parent is parent of child
-        """
-        if parent is None:
+        if ancestor is None:
             return False
-        if parent == child:
+        if ancestor == node:
             return True
-        return (is_parent_of(parent.left, child) or
-                is_parent_of(parent.right, child))
+        return (is_ancestor_of(ancestor.left, node) or
+                is_ancestor_of(ancestor.right, node))
 
     if root in (None, node1, node2):
         return root
 
-    if is_parent_of(node1, node2):
+    if is_ancestor_of(node1, node2):
         return node1
-    if is_parent_of(node2, node1):
+    if is_ancestor_of(node2, node1):
         return node2
 
     node = root
     while node:
-        if is_parent_of(node.left, node1) and is_parent_of(node.left, node2):
+        left, right = node.left, node.right
+        if (is_ancestor_of(left, node1) and is_ancestor_of(left, node2)):
             node = node.left
-        elif (is_parent_of(node.right, node1) and
-              is_parent_of(node.right, node2)):
+        elif (is_ancestor_of(right, node1) and is_ancestor_of(right, node2)):
             node = node.right
         else:
             return node
 
-    return node
+    return None
 
 
 def lowest_ancestor3(root, node1, node2):
-    """
-    get lowest ancestor, method 3
+    """get lowest ancestor, method 3
     """
     def get_path(cur, node, path):
-        """
-        get path from root to node
+        """get path from root to node
         """
         if cur is None:
             return False
@@ -279,8 +272,7 @@ def lowest_ancestor3(root, node1, node2):
 
 
 def lowest_ancestor4(root, node1, node2):
-    """
-    get lowest ancestor, method 4
+    """get lowest ancestor, method 4
     """
     deq = deque()
     deq.append(root)
@@ -305,8 +297,7 @@ def lowest_ancestor4(root, node1, node2):
 
 
 def test_lowest_ancestor(count, test_count):
-    """
-    test lowest ancestor
+    """test lowest ancestor
     """
     bst = BST()
     vals = [i for i in range(count)]
