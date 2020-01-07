@@ -306,6 +306,7 @@ def test_get_two_error_nodes_of_bst(count):
                 raise Exception('Error')
 
             test += 1
+    print('test_get_two_error_nodes_of_bst pass')
 
 
 def test_fix_bst_with_two_error_nodes1(count):
@@ -335,6 +336,7 @@ def test_fix_bst_with_two_error_nodes1(count):
                 raise Exception('Error')
 
             test += 1
+    print('test_fix_bst_with_two_error_nodes1 pass')
 
 
 def test_fix_bst_with_two_error_nodes2(count):
@@ -364,6 +366,7 @@ def test_fix_bst_with_two_error_nodes2(count):
                 raise Exception('Error')
 
             test += 1
+    print('test_fix_bst_with_two_error_nodes2 pass')
 
 
 if __name__ == '__main__':
