@@ -33,7 +33,7 @@ def search_string(arr, s):
     return result
 
 
-def lower_bound2(nums, target):
+def lower_bound(nums, target):
     begin = 0
     end = len(nums)
 
