@@ -3,7 +3,7 @@ def rotate(matrix):
         return
 
     size = len(matrix)
-    for i in range(len(matrix)//2):
+    for i in range(size//2):
         matrix[i], matrix[size-i-1] = matrix[size-i-1], matrix[i]
 
     for i in range(size):

@@ -24,11 +24,10 @@ def cycle_print1(matrix):
 
             recursive(matrix, row_beg+1, row_end-1, col_beg+1, col_end-1)
 
-    if matrix is None or len(matrix) == 0 or len(matrix[0]) == 0:
-        return
-
-    print(matrix)
     result = []
+    if matrix is None or len(matrix) == 0 or len(matrix[0]) == 0:
+        return result
+
     recursive(matrix, 0, len(matrix)-1, 0, len(matrix[0])-1)
     return result
 
@@ -57,11 +56,9 @@ def cycle_print2(matrix):
             for r in range(row_end-1, row_beg, -1):
                 result.append(matrix[r][col_beg])
 
-    if matrix is None or len(matrix) == 0 or len(matrix[0]) == 0:
-        return
-
-    print(matrix)
     result = []
+    if matrix is None or len(matrix) == 0 or len(matrix[0]) == 0:
+        return result
 
     row_beg, row_end = 0, len(matrix)-1
     col_beg, col_end = 0, len(matrix[0])-1
@@ -81,6 +78,11 @@ def test_cycle_print(row_num, col_num):
         row = [n+i for i in range(col_num)]
         n += col_num
         mat.append(row)
+
+    for row in mat:
+        for d in row:
+            print('%2d' % d, end=' ')
+        print()
 
     result1 = cycle_print1(mat)
     result2 = cycle_print2(mat)

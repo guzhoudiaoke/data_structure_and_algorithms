@@ -23,13 +23,16 @@ class Trie():
             assert(0 <= index < 26)
             if node._map[index] is None:
                 node._map[index] = TrieNode()
-            node._path += 1
             node = node._map[index]
+            node._path += 1
 
         node._end += 1
 
     def delete(self, s):
-        if self.search(s) == 0:
+        if s is None:
+            return
+
+        if self.search(s) is False:
             return
 
         node = self._root
@@ -37,8 +40,8 @@ class Trie():
             index = ord(c) - ord('a')
             assert(0 <= index < 26)
             assert(node._map[index] is not None)
-            node._path -= 1
             node = node._map[index]
+            node._path -= 1
 
         node._end -= 1
 
@@ -51,7 +54,7 @@ class Trie():
             index = ord(c) - ord('a')
             assert(0 <= index < 26)
             if node._map[index] is None:
-                return None
+                return False
             node = node._map[index]
 
         return node._end != 0
@@ -88,8 +91,8 @@ def test_trie():
                      for __ in range(length)])
         count = 0
         for w in words:
-            if w != s and w.startswith(s):
-                count += words[w]
+            if w.startswith(s):
+                count += words.get(w, 0)
         assert(count == trie.prefix_number(s))
 
     for s in list(words):
